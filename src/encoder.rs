@@ -2,14 +2,12 @@ use crate::types::Alphabet;
 use crate::types::Char;
 
 pub fn encode(text: &str) -> (String, Alphabet) {
+  let alphabet = create_alphabet(text);
   let mut encoded = String::from("");
 
-  for character in text.split("") {
-    if character.is_empty() {
-      continue;
-    }
-    let index = alphabet.iter().position(|_char| _char.title == character).expect("Char not found in alphabet");
-    encoded += &alphabet[index].code;
+  for character in text.chars() {
+    let index = alphabet.iter().position(|_char| _char.title == character.to_string()).unwrap();
+    encoded.push_str(&alphabet[index].code);
   }
   (encoded, alphabet)
 }
@@ -17,8 +15,8 @@ pub fn encode(text: &str) -> (String, Alphabet) {
 fn create_alphabet(text: &str) -> Alphabet {
   let mut alphabet: Alphabet = Vec::new();
   
-  for character in all_characters {
-    add_or_increment(&mut alphabet, character)
+  for character in text.chars() {
+    add_or_increment(&mut alphabet, &character.to_string())
   }
 
   alphabet.sort_by_key(|s| s.count);
