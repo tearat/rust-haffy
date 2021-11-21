@@ -1,8 +1,7 @@
+use crate::types::Alphabet;
 use crate::types::Char;
-use std::str::Split;
 
-pub fn encode(text: &str) -> (String, Vec<Char>) {
-  let alphabet = create_alphabet(text.split(""));
+pub fn encode(text: &str) -> (String, Alphabet) {
   let mut encoded = String::from("");
 
   for character in text.split("") {
@@ -15,8 +14,8 @@ pub fn encode(text: &str) -> (String, Vec<Char>) {
   (encoded, alphabet)
 }
 
-fn create_alphabet(all_characters: Split<&str>) -> Vec<Char> {
-  let mut alphabet: Vec<Char> = Vec::new();
+fn create_alphabet(text: &str) -> Alphabet {
+  let mut alphabet: Alphabet = Vec::new();
   
   for character in all_characters {
     add_or_increment(&mut alphabet, character)
@@ -30,7 +29,7 @@ fn create_alphabet(all_characters: Split<&str>) -> Vec<Char> {
   alphabet
 }
 
-fn add_or_increment(alphabet: &mut Vec<Char>, character: &str) {
+fn add_or_increment(alphabet: &mut Alphabet, character: &str) {
   if character.is_empty() {
     return
   }
@@ -49,7 +48,7 @@ fn add_or_increment(alphabet: &mut Vec<Char>, character: &str) {
   }
 }
 
-fn set_codes(alphabet: &mut Vec<Char>) {
+fn set_codes(alphabet: &mut Alphabet) {
   let mut next_code = String::from("0");
   let length = alphabet.len();
   

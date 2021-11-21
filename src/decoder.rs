@@ -1,6 +1,6 @@
-use crate::types::Char;
+use crate::types::Alphabet;
 
-pub fn decode(text: &str, alphabet: &Vec<Char>) -> String {
+pub fn decode(text: &str, alphabet: &Alphabet) -> String {
   let mut current_code = String::from("");
   let mut decoded = String::from("");
   for character in text.chars() {
