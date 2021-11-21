@@ -17,5 +17,3 @@ pub fn decode(text: &str, alphabet: &Alphabet) -> String {
 
   decoded
 }
-
-

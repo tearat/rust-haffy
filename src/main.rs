@@ -11,7 +11,6 @@ fn main() {
     println!("file.txt: {} \n", text);
 
     let (encoded, alphabet) = encode(&text);
-
     println!("encoded: {} \n", encoded);
     println!("alphabet: {:#?} \n", alphabet);
     
