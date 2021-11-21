@@ -28,9 +28,6 @@ fn create_alphabet(text: &str) -> Alphabet {
 }
 
 fn add_or_increment(alphabet: &mut Alphabet, character: &str) {
-  if character.is_empty() {
-    return
-  }
   let index = alphabet.iter().position(|_char| _char.title == character);
   match index {
       None => {
